@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -69,10 +70,30 @@ int main()
 
 int Ack::calc() const
 {
-    return -1;
+    if(m==0){
+        return n+1;
+    }
+    else if(n==0){
+        return this->right->calc();
+    }
+    else{
+        Ack* temp = new Ack(m-1, this->right->calc());
+
+        return temp->calc();
+    }
 }
 
 string Ack::strPar() const
 {
-    return "Oops";
+    if(m==0){
+        return (to_string(n+1));
+    }
+    else if(n==0){
+        string temp = "A("+ to_string(m-1) + ",)";
+        return temp;
+    }
+    else{
+        string temp = "A(" + to_string(m-1) + "," + this->right->strPar() + ")";
+        return temp;
+    }
 }
