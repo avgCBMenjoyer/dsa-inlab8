@@ -89,7 +89,7 @@ string Ack::strPar() const
         return (to_string(n+1));
     }
     else if(n==0){
-        string temp = "A("+ to_string(m-1) + ",)";
+        string temp = this->right->strPar() ;
         return temp;
     }
     else{
